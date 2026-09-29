@@ -31,3 +31,18 @@ jobs:
 
       - name: Typecheck
         run: yarn typecheck
+
+  deploy:
+    name: Deployment
+    runs-on: self-hosted
+    needs:
+      - typecheck
+    steps:
+      - name: Deploy Application by ID
+        uses: thinesjs/dokploy-deployer-action@v1
+        with:
+            dokploy_url: ${{ secrets.DOKPLOY_URL }}
+            api_key: ${{ secrets.DOKPLOY_API_KEY }}
+            type: application
+            application_id: ${{ secrets.DOKPLOY_APPLICATION_ID }}
+            wait_for_deployment: true
