@@ -3,9 +3,9 @@ FROM node:22.23.2-alpine AS builder
 ARG VITE_API_URL
 ENV VITE_API_URL=$VITE_API_URL
 
-WORKDIR /app
+asdWORKDIR /app
 
-COPY package.json yarn.lock ./
+asdCOPY package.json yarn.lock ./
 
 RUN yarn install --frozen-lockfile
 
